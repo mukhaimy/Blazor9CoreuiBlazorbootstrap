@@ -12,5 +12,5 @@ Created to help implement Blazor Server (.NET 9) with Microsoft Identity and Cor
 - Quill
 
 # Thanks
-We are very open to feedback, corrections, and suggestions for further development of this web application. If you find a bug, have an idea for a feature improvement, or would like to contribute in the form of a pull request, please do not hesitate to do so. Every contribution will greatly help in perfecting the integration of Blazor 9, and this Core UI to make it more stable, secure, and easy to use by the developer community.
+We are very open to feedback, corrections, and suggestions for further development of this web application. If you find a bug, have an idea for a feature improvement, or would like to contribute in the form of a pull request, please do not hesitate to do so. Every contribution will greatly help in perfecting the integration of Blazor 9 and Core UI to make it more stable, and easy to use by the developer community.
 
