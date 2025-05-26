@@ -1,0 +1,12 @@
+﻿@page "/"
+@inject NavigationManager navigationManager
+
+@code {
+    private bool isAuthenticated;
+
+    protected override async Task OnInitializedAsync()
+    {
+        navigationManager.NavigateTo("/home");
+        
+    }
+}

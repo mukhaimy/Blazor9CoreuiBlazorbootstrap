@@ -1,0 +1,74 @@
+﻿@inherits LayoutComponentBase
+@inject Services.MainLayoutBreadcrumbService LayoutService
+
+
+<TSidebar />
+
+<div class="wrapper d-flex flex-column min-vh-100">
+
+    <TTopHeader />
+    <div class="py-2 mb-4 bg-white bottom-line-shadow">
+        <div class="container-fluid px-4 py-0">
+            @if (receivedValue.Count() > 0)
+            {
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb my-0">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboard"><i class="fa-solid fa-house-chimney"></i></a>
+                        </li>
+                        @foreach (var item in receivedValue)
+                        {
+                            @if(string.IsNullOrEmpty(item.Url))
+                            {
+                                <li class="breadcrumb-item">
+                                    @item.Title
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="breadcrumb-item">
+                                    <a href="@item.Url">@item.Title</a>
+                                </li>
+                            }
+                            
+                        }                        
+                    </ol>
+                </nav>
+            }            
+        </div>
+    </div>
+
+    <div class="body flex-grow-1">
+        <div class="container-lg px-4">
+            @Body
+        </div>
+    </div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+</div>
+
+
+@code {
+    private List<Models.BreadcrumbItem> receivedValue = [];
+
+    protected override void OnInitialized()
+    {
+        LayoutService.OnValueChanged += HandleValueChanged;
+    }
+
+    public void Dispose()
+    {
+        LayoutService.OnValueChanged -= HandleValueChanged;
+    }
+
+    private void HandleValueChanged(List<Models.BreadcrumbItem> value)
+    {
+        receivedValue = value;
+        StateHasChanged(); // Force re-render
+    }
+}

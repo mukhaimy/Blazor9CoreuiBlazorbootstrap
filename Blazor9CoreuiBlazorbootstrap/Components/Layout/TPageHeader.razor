@@ -1,0 +1,29 @@
+﻿
+    <div class="container-fluid px-4 pt-2 pb-2 mb-4">
+        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb border-0 border-bottom border-secondary my-0">
+                
+               @*  <li class="breadcrumb-item">
+                <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                <span>Components</span>
+                </li>
+                <li class="breadcrumb-item">
+                <span>Base</span>
+                </li>
+                <li class="breadcrumb-item active">
+                <span>Tables</span>
+                </li> *@
+               
+
+                @BreadcrumbBody
+            </ol>
+        </nav>
+    </div>
+
+
+@code {
+    [Parameter]
+    public RenderFragment BreadcrumbBody { get; set; } = null!;
+}

@@ -1,0 +1,28 @@
+﻿@page "/home"
+@inject Services.MainLayoutBreadcrumbService mainLayoutBreadcrumb
+
+<PageTitle>Home</PageTitle>
+
+<div class="card mb-4">
+    <div class="card-header">Home</div>
+    <div class="card-body">
+        <h1>Hello, world!</h1>
+        <p>Welcome to your new app.</p>        
+    </div>
+</div>
+
+
+@code {
+
+    private List<Models.BreadcrumbItem> CreateBreadcrumbs()
+    {
+        List<Models.BreadcrumbItem> hsl = new();
+        hsl.Add(new Models.BreadcrumbItem { Title = "Dashboard", Url = "/dashboard" });
+        return hsl;
+    }
+
+    protected override void OnInitialized()
+    {
+        mainLayoutBreadcrumb.SetValue(CreateBreadcrumbs());
+    }
+}

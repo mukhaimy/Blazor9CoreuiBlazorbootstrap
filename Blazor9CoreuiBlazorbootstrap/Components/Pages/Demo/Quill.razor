@@ -1,0 +1,47 @@
+﻿@page "/quill"
+@inject Services.MainLayoutBreadcrumbService mainLayoutBreadcrumb
+@rendermode InteractiveServer
+
+@code {
+
+    private List<Models.BreadcrumbItem> CreateBreadcrumbs()
+    {
+        List<Models.BreadcrumbItem> hsl = new();
+        hsl.Add(new Models.BreadcrumbItem { Title = "Html Editor", Url = "/quill" });
+        return hsl;
+    }
+
+    protected override void OnInitialized()
+    {
+        mainLayoutBreadcrumb.SetValue(CreateBreadcrumbs());
+    }
+
+    string quillContent = "<p>Hello, <strong>world</strong>!</p>";    
+    private void OnContentChanged(string value)
+    {
+        quillContent = value;
+    }
+}
+
+
+<PageTitle>Quill Editor</PageTitle>
+
+<div class="card mb-4">
+    <div class="card-header">Quill Editor</div>
+    <div class="card-body">
+        
+        <QuillEditor Content="@quillContent" ContentChanged="OnContentChanged" />
+
+        <p><strong>Output HTML:</strong></p>
+        <div>@quillContent</div>
+        <hr />
+
+        <h4 class="text-danger">Alternative</h4>
+        <p class="pl-3">
+            You can use: <br />
+            https://github.com/ray-vinod/Blazor.Editor <br />
+            https://www.nuget.org/packages/Blazor.Editor/
+        </p>
+        
+    </div>
+</div>
